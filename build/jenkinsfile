@@ -3,19 +3,27 @@ properties([disableConcurrentBuilds()])
 
 pipeline {
     agent any
-    environment {
+    
+	environment {
         PROJECT_NAME = "${GIT_URL.tokenize('/.')[-2]}"
         BRANCH = "${GIT_BRANCH.split('/')[1]}"
     }
+	
     stages {
-        stage('Build '){
+        stage('Create temporary docker'){
             steps {
                 script {
-                         echo "Build succes"
-                         echo "${BRANCH}"
-                         echo "${PROJECT_NAME}"
+						def inspectExitCode = sh script: "docker build . -t tmp_${BRANCH} -f build/Dockerfile", returnStatus: true
+						if (inspectExitCode == 0)
+						{
+							echo "Create temporary docker succes..."   
+						}
+						else {
+							error "Create temporary docker failed..."
+						}
+                       
                     }
                 }         
-        }  
+        }
     }
 }
