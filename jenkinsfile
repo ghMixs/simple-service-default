@@ -4,8 +4,8 @@ properties([disableConcurrentBuilds()])
 pipeline {
     agent any
     environment {
-        PROJECT_NAME = ${GIT_URL.tokenize('/.')[-2]}
-        BRANCH = ${GIT_BRANCH.split('/')[1]}
+        PROJECT_NAME = '${GIT_URL.tokenize('/.')[-2]}'
+        BRANCH = '${GIT_BRANCH.split('/')[1]}'
     }
     stages {
         stage('Build '){
