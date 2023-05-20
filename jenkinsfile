@@ -1,11 +1,12 @@
 #!groovy
 properties([disableConcurrentBuilds()])
-environment {
-        PROJECT_NAME = ${GIT_URL.tokenize('/.')[-2]}
-        BRANCH = ${GIT_BRANCH.split('/')[1]
-}
+
 pipeline {
     agent any
+    environment {
+        PROJECT_NAME = ${GIT_URL.tokenize('/.')[-2]}
+        BRANCH = ${GIT_BRANCH.split('/')[1]
+    }
     stages {
         stage('Build '){
             steps {
