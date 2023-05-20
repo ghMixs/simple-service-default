@@ -9,7 +9,7 @@ pipeline {
                 script {
            
                         echo "Build succes"
-                        echo ${env.BRANCH_NAME}
+                        echo "${BRANCH_NAME}"
                       
                     }
                 }         
