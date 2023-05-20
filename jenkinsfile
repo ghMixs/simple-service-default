@@ -1,6 +1,9 @@
 #!groovy
 properties([disableConcurrentBuilds()])
-
+environment {
+        PROJECT_NAME = ${GIT_URL.tokenize('/.')[-2]}
+        BRANCH = ${GIT_BRANCH.split('/')[1]
+}
 pipeline {
     agent any
     stages {
@@ -8,11 +11,8 @@ pipeline {
             steps {
                 script {
                          echo "Build succes"
-                         echo "GIT_COMMIT ${GIT_COMMIT}" 
-                         echo "TEST ${GIT_URL.tokenize('/.')[-2]}"
-                         echo "GIT_BRANCH ${GIT_BRANCH.split('/')[1]}"
-                         echo "GIT_URL ${GIT_URL}"
-                      
+                         echo "${BRANCH}"
+                         echo "${PROJECT_NAME}"
                     }
                 }         
         }  
