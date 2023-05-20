@@ -10,6 +10,8 @@ pipeline {
            
                         echo "Build succes"
                         echo "${env.BRANCH_NAME}"
+                        echo "${env.GIT_COMMIT}"
+                         echo "${GIT_COMMIT}"
                       
                     }
                 }         
