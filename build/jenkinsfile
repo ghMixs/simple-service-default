@@ -45,7 +45,7 @@ pipeline {
         stage('Start docker') {
             steps {
                 script {
-                    sh 'docker run -p 10.8.0.1:5000:5000 --name ${PROJECT_NAME}_${BRANCH} -d img_${PROJECT_NAME}_${BRANCH}x'
+                    sh 'docker run -p 10.8.0.1:5000:5000 --name ${PROJECT_NAME}_${BRANCH} -d img_${PROJECT_NAME}_${BRANCH}'
                 }
             }
         }
