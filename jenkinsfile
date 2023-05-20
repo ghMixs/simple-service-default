@@ -9,8 +9,7 @@ pipeline {
                 script {
                          echo "Build succes"
                          echo "GIT_COMMIT ${GIT_COMMIT}" 
-                         basename=$(basename $GIT_COMMIT)
-                         echo $basename
+                         echo "TEST ${GIT_URL.tokenize('/.')[-2]}"
                          echo "GIT_BRANCH ${GIT_BRANCH.split('/')[1]}"
                          echo "GIT_URL ${GIT_URL}"
                       
